@@ -20,7 +20,7 @@ class KafkaProducerConfig {
 
     @Bean
     ProducerFactory<String, SocialRatingCalculationRequest> producerFactory() {
-        final Map<String, Object> props = of(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
+        final Map<String, Object> props = of(BOOTSTRAP_SERVERS_CONFIG, "kafka:9093",
                 KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                 VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(props);
