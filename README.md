@@ -30,3 +30,7 @@ curl -v -H "Content-Type: application/json" http://localhost:8080/persons --data
 ```
 
 See the logs of Social Rating Calculator, the social rating for the user from the cURL request should be logged there.
+
+## To Run With Docker
+
+See [Social Rating Docker Compose](https://github.com/yaskovdev/social-rating-docker-compose).
