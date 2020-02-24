@@ -1,5 +1,6 @@
 package com.yaskovdev.collector;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +17,14 @@ import static org.apache.kafka.clients.producer.ProducerConfig.KEY_SERIALIZER_CL
 import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
 
 @Configuration
+@RequiredArgsConstructor
 class KafkaProducerConfig {
+
+    private final CollectorConfig config;
 
     @Bean
     ProducerFactory<String, SocialRatingCalculationRequest> producerFactory() {
-        final Map<String, Object> props = of(BOOTSTRAP_SERVERS_CONFIG, "kafka:9093",
+        final Map<String, Object> props = of(BOOTSTRAP_SERVERS_CONFIG, config.getKafkaBootstrapServers(),
                 KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
                 VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(props);

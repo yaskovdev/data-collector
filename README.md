@@ -18,13 +18,8 @@ bin/kafka-server-start.sh config/server.properties
 Build and run the application:
 ```
 cd data-collector
-mvn clean package
-java -jar ./target/*.jar
-```
-
-You can specify alternative properties file for the application, e.g.:
-```
-java -jar ./target/*.jar --spring.config.location=./prod.properties
+mvn clean package -D maven.test.skip
+java -jar ./target/*.jar --spring.config.location=classpath:/local.properties
 ```
 
 Run [Social Rating Calculator](https://github.com/yaskovdev/social-rating-calculator).
