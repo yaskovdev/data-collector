@@ -18,7 +18,6 @@ bin/kafka-server-start.sh config/server.properties
 Build and run the application:
 ```
 cd data-collector
-rm -rf target
 mvn clean package
 java -jar ./target/*.jar
 ```
@@ -30,16 +29,9 @@ java -jar ./target/*.jar --spring.config.location=./prod.properties
 
 Run [Social Rating Calculator](https://github.com/yaskovdev/social-rating-calculator).
 
-Send a test request:
+Send the test request:
 ```
 curl -v -H "Content-Type: application/json" http://localhost:8080/persons --data '{"first_name": "Koshchey", "last_name": "Immortal", "age": 20000}'
 ```
 
 See the logs of Social Rating Calculator, the social rating for the user from the cURL request should be logged there.
-
-## To Run With Docker
-
-```
-docker build -t yaskosved/data-collector .
-docker run -p 8080:8080 -t yaskosved/data-collector
-```
