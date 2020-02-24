@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 
 @Data
 class Person {
@@ -17,13 +16,12 @@ class Person {
     @NotBlank
     private final String lastName;
 
-    @NotNull
-    @Positive
-    private final Integer age;
+    @Min(1)
+    private final int age;
 
     @JsonCreator
-    public Person(@JsonProperty("first_name") final String firstName, @JsonProperty("last_name") final String lastName,
-            @JsonProperty("age") final Integer age) {
+    Person(@JsonProperty("first_name") final String firstName, @JsonProperty("last_name") final String lastName,
+            @JsonProperty("age") final int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

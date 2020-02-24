@@ -12,10 +12,9 @@ import javax.validation.constraints.Min;
 @Validated
 @Component
 @ConfigurationProperties(prefix = "collector")
-public class CollectorConfig {
+class CollectorConfig {
 
     @Min(0)
     @Max(1)
     private int calculationSeed;
 }
-
