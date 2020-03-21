@@ -16,6 +16,6 @@ class SocialRatingCalculationCallback implements ListenableFutureCallback<SendRe
 
     @Override
     public void onFailure(@Nonnull final Throwable e) {
-        log.info("Could not send", e);
+        log.error("Could not send", e);
     }
 }
